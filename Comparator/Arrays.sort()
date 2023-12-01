@@ -1,0 +1,52 @@
+Example-1  sort the array based on the number of digits in each element
+
+Given array: [234, 12, 9876, 5, 1000]
+The sorted array becomes: [9876, 1000, 234, 12, 5]
+Arrays.sort(arr, (a, b) -> {
+    int countDigitsA = String.valueOf(a).length(); // Count digits in number a
+    int countDigitsB = String.valueOf(b).length(); // Count digits in number b
+
+    // Sort based on count of digits
+    if (countDigitsA != countDigitsB) {
+        return countDigitsB - countDigitsA; // Sort in descending order of digit count
+    } else {
+        return a - b; // Maintain stable sort by considering original position for equal digit counts
+    }
+});
+
+Example-2  We'll sort the strings in ascending order of their lengths. If the lengths are equal, we'll sort them lexicographically (alphabetically).
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class SortStringsByLength {
+    public static void main(String[] args) {
+        String[] arr = {"apple", "banana", "orange", "kiwi", "grape"};
+
+        Arrays.sort(arr, Comparator.comparingInt(String::length)
+                                    .thenComparing(Comparator.naturalOrder()));
+
+        // Print sorted array
+        System.out.println("Sorted array based on length and lexicographical order:");
+        for (String str : arr) {
+            System.out.print(str + " ");
+        }
+    }
+}
+
+example -3 sort the array on the basis of bitcount 
+
+Arrays.sort(arr, (a, b) -> {
+    int countA = Integer.bitCount(a); // Count set bits in binary representation of a
+    int countB = Integer.bitCount(b); // Count set bits in binary representation of b
+
+    // Sort based on count of set bits
+    if (countA != countB) {
+        return countB - countA; // Sort in descending order of set bit count
+    } else {
+        return a - b; // Maintain stable sort by considering original position for equal set bit counts
+    }
+});
+
+
+
