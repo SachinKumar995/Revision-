@@ -44,7 +44,7 @@ Arrays.sort(arr, (a, b) -> {
     if (countA != countB) {
         return countB - countA; // Sort in descending order of set bit count
     } else {
-        return a - b; // Maintain stable sort by considering original position for equal set bit counts
+        return 0; // Maintain stable sort by considering original position for equal set bit counts
     }
 });
 
